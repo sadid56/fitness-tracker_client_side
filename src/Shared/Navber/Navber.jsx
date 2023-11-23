@@ -9,7 +9,7 @@ const Navber = () => {
       <h2 className="text-4xl font-semibold text-white">Strong</h2>
       <ul className={`flex items-center gap-6 bg-gray-600 text-white p-10 md:p-0 md:text-white md:bg-transparent ${isOpen ? 'flex-col  md:flex-row absolute md:relative top-20 md:top-0' : 'hidden md:flex'}`}>
                 <li><NavLink to='/'>Feed</NavLink></li>
-                <li><NavLink>Shorts</NavLink></li>
+                <li><NavLink to='/hggh'>Shorts</NavLink></li>
                 <li><NavLink>Videos</NavLink></li>
                 <li><NavLink>Feed</NavLink></li>
             </ul>
