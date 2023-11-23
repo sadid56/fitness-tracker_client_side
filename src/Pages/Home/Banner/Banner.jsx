@@ -20,21 +20,21 @@ const Banner = () => {
           modules={[Autoplay, EffectFade]}
           className="mySwiper relative">
           <SwiperSlide>
-            <img src={slider1} className="max-h-screen w-full " alt="" />
+            <img src={slider1} className="h-screen w-full " alt="" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={slider2} className="max-h-screen w-full" alt="" />
+            <img src={slider2} className="h-screen w-full" alt="" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={slider3} className="max-h-screen w-full" alt="" />
+            <img src={slider3} className="h-screen w-full" alt="" />
           </SwiperSlide>
         </Swiper>
-        <div className="absolute top-1/4 z-10 w-3/5 ml-16 pl-5 space-y-2 border-l-2 border-[#fe1313]">
-          <div className="flex items-center gap-4">
+        <div className="absolute top-1/4 z-10 md:w-3/5  px-5 md:ml-16 md:pl-5 space-y-2 md:border-l-2 border-[#fe1313] text-center md:text-start">
+          <div className="flex items-center gap-4 justify-center">
             <div className="border border-[#fe1313] w-[40px]"></div>
             <p className="text-xl font-medium text-[#fe1313]">With Srong</p>
           </div>
-          <h2 className="text-6xl font-bold text-white uppercase">
+          <h2 className="text-4xl md:text-6xl font-bold text-white uppercase">
             Build perfect body shape for good and healthy life.
           </h2>
           <p className="text-white">
