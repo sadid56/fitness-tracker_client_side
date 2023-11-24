@@ -30,7 +30,7 @@ const Navber = () => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/hggh">Gallery</NavLink>
+          <NavLink to="/gallery">Gallery</NavLink>
         </li>
         <li>
           <NavLink>Classes</NavLink>
