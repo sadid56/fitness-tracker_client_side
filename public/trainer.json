@@ -1,0 +1,18 @@
+[
+    {
+      "name": "Alex Smith",
+      "category": "Personal Trainer",
+      "image": "https://i.ibb.co/xSH3zZf/trainer1.webp"
+    },
+    {
+      "name": "Emily Johnson",
+      "category": "Yoga Instructor",
+      "image": "https://i.ibb.co/ccrtSYv/trianer2.webp"
+    },
+    {
+      "name": "Chris Davis",
+      "category": "Strength and Conditioning Coach",
+      "image": "https://i.ibb.co/xSH3zZf/trainer1.webp"
+    }
+  ]
+  
