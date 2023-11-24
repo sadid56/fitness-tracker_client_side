@@ -24,7 +24,7 @@ const Testimonial = () => {
     <div>
       <SectionTitle
         title={"Testimonial"}
-        description={"What say our client."}
+        description={"What say our clients ?"}
       />
       <div
         className="hero min-h-screen bg-fixed"
