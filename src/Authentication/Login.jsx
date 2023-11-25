@@ -5,10 +5,12 @@ import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../Hooks/useAxioPublic";
 
 const Login = () => {
   const { signIn, googleLogin } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
     // console.log(data);
@@ -24,9 +26,18 @@ const Login = () => {
   // google login
   const handleGoogleLogin = async () => {
     try {
-      await googleLogin();
-      toast.success("Google Login Success !");
-      navigate("/");
+      const resgoogle = await googleLogin();
+      // console.log(resgoogle);
+      if (resgoogle) {
+        const userInfo = {
+          name: resgoogle?.user?.displayName,
+          email: resgoogle?.user?.email,
+          role: "member",
+        };
+        await axiosPublic.post("/users", userInfo);
+        toast.success("Google Login Success !");
+        navigate("/");
+      }
     } catch (err) {
       toast.error(err.message);
     }

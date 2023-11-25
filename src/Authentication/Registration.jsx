@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import SectionHelmet from "../Components/SectionHelmet";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../Hooks/useAxioPublic";
 
 const Registration = () => {
   const { profileUpdate, createUser } = useAuth();
+  const axiosPublic = useAxiosPublic()
   const navigate = useNavigate()
   const {
     register,
@@ -16,9 +18,15 @@ const Registration = () => {
   const onSubmit = async (data) => {
     try {
       const res = await createUser(data?.email, data?.password);
-      console.log(res.user);
+      // console.log(res);
       if (res) {
         await profileUpdate(data?.name, data?.photo);
+        const userInfo = {
+          name: data?.name,
+          email: res?.user?.email,
+          role: "member"
+        }
+        await axiosPublic.post('/users', userInfo)
         toast.success('Registration Success !')
         navigate('/')
       }
