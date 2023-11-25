@@ -7,6 +7,7 @@ import Login from "../Authentication/Login";
 import Gallery from "../Pages/Gellary/Gallery";
 import Classes from "../Pages/Classes/Classes";
 import ClassesDetails from "../Pages/Classes/ClassesDetails";
+import Community from "../Pages/Community/Community";
 
 const Routers = createBrowserRouter([
         {
@@ -40,6 +41,10 @@ const Routers = createBrowserRouter([
                     loader: ({params})=> fetch(`http://localhost:5600/classes/${params.id}`)
                 }
             ]
+        },
+        {
+            path: '/community',
+            element: <Community/>
         }
 ])
 
