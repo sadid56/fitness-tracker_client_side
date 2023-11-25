@@ -6,6 +6,7 @@ import bannerImg from "../../assets/images/gallery.png";
 import "./gallery.css";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React, { useEffect, useRef } from "react";
+import Cover from "../../Components/Cover";
 
 const Gallery = () => {
   const axiosPublic = useAxiosPublic();
@@ -48,15 +49,8 @@ const Gallery = () => {
     style={{ overflowY: "auto", maxHeight: "100vh" }}
     onScroll={handleScroll}>
       <SectionHelmet title={"Strong | Gallery"} />
-      <div
-        className="hero h-[70vh]"
-        style={{ backgroundImage: `url(${bannerImg})` }}>
-        <div className="hero-content">
-          <h2 className="text-7xl text-center font-bold text-white">
-            Our Gallery
-          </h2>
-        </div>
-      </div>
+   
+    <Cover img={bannerImg} title={'Our Gallery'}/>
 
       <SectionTitle title={"Our Gallery Images"} />
         {isFetching && <p className="text-center">Loading...</p>}

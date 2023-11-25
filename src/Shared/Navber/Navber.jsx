@@ -3,6 +3,7 @@ import { FiAlignJustify, FiX } from "react-icons/fi";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import './navber.css'
 
 const Navber = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ const Navber = () => {
   };
 
   return (
-    <div className="fixed z-20 flex justify-between px-5 w-full py-4 bg-[rgba(0,0,0,0.6)]">
+    <nav id="nav" className="fixed z-20 flex justify-between px-5 w-full py-4 bg-[rgba(0,0,0,0.6)]">
       <h2 className="text-4xl font-semibold text-white">Strong</h2>
       <ul
         className={`flex items-center gap-6 bg-gray-600 text-white p-10 md:p-0 md:text-white md:bg-transparent ${
@@ -33,13 +34,16 @@ const Navber = () => {
           <NavLink to="/gallery">Gallery</NavLink>
         </li>
         <li>
-          <NavLink>Classes</NavLink>
+          <NavLink to="/trainer">Trainer</NavLink>
         </li>
         <li>
-          <NavLink>Community</NavLink>
+          <NavLink to='/classes'>Classes</NavLink>
         </li>
         <li>
-          <NavLink>Dashboard</NavLink>
+          <NavLink to='/community'>Community</NavLink>
+        </li>
+        <li>
+          <NavLink to='/dashboard'>Dashboard</NavLink>
         </li>
       </ul>
       <div className="flex items-center gap-3">
@@ -83,7 +87,7 @@ const Navber = () => {
           </Link>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 
