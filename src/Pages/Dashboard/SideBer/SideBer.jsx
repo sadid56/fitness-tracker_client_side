@@ -3,8 +3,14 @@ import { FaUserCircle, FaHouseUser  } from "react-icons/fa";
 import { MdLocalActivity } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import './sideber.css'
+import useAdmin from "../../../Hooks/useAdmin";
+import useTrainer from "../../../Hooks/useTrainer";
 
 const SideBer = () => {
+    const [isAdmin]= useAdmin()
+    const [isTrainer] = useTrainer()
+    console.log(isAdmin);
+    console.log(isTrainer);
     return ( 
         <div>
             <ul id="nav" className="text-xl font-medium space-y-3 p-5">
