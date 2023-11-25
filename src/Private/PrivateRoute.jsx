@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Navigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import Loader from "../Shared/Loader/Loader";
 
 const PrivateRoute = ({children}) => {
     const {user, loading}= useAuth()
     if(loading){
-        return <h3 className="text-center text-2xl">Loading...</h3>
+        return <Loader/>
     }
     if(user){
         return children

@@ -16,7 +16,7 @@ const Classes = () => {
       return res.data;
     },
   });
-  console.log(classes);
+  // console.log(classes);
   return (
     <div>
       <SectionHelmet title={"Strong | Classes"} />

@@ -8,6 +8,10 @@ import Gallery from "../Pages/Gellary/Gallery";
 import Classes from "../Pages/Classes/Classes";
 import ClassesDetails from "../Pages/Classes/ClassesDetails";
 import Community from "../Pages/Community/Community";
+import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
+import Profile from "../Pages/Dashboard/Profile/Profile";
+import PrivateRoute from "../Private/PrivateRoute";
+import RecommendedClass from "../Pages/Dashboard/RecommendedClass/RecommendedClass";
 
 const Routers = createBrowserRouter([
         {
@@ -45,6 +49,22 @@ const Routers = createBrowserRouter([
         {
             path: '/community',
             element: <Community/>
+        },
+        {
+            path: '/dashboard',
+            element: <Dashboard/>,
+            children: [
+                // member related
+                {
+                    path: '/dashboard/profile',
+                    element:<PrivateRoute><Profile/></PrivateRoute>
+                },
+                {
+                    path: '/dashboard/recommended-class',
+                    element: <PrivateRoute><RecommendedClass/></PrivateRoute>
+                }
+
+            ]
         }
 ])
 
