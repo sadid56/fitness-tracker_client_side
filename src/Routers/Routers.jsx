@@ -12,6 +12,8 @@ import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 import PrivateRoute from "../Private/PrivateRoute";
 import RecommendedClass from "../Pages/Dashboard/RecommendedClass/RecommendedClass";
+import ManageMembers from "../Pages/Dashboard/ManageMembers/ManageMembers";
+import AddForum from "../Pages/Dashboard/AddForum/AddForum";
 
 const Routers = createBrowserRouter([
         {
@@ -52,16 +54,25 @@ const Routers = createBrowserRouter([
         },
         {
             path: '/dashboard',
-            element: <Dashboard/>,
+            element: <PrivateRoute><Dashboard/></PrivateRoute>,
             children: [
                 // member related
                 {
                     path: '/dashboard/profile',
-                    element:<PrivateRoute><Profile/></PrivateRoute>
+                    element:<Profile/>
                 },
                 {
                     path: '/dashboard/recommended-class',
-                    element: <PrivateRoute><RecommendedClass/></PrivateRoute>
+                    element: <RecommendedClass/>
+                },
+                // trainer related
+                {
+                    path: '/dashboard/manage-members',
+                    element: <ManageMembers/>
+                },
+                {
+                    path:'/dashboard/add-forum',
+                    element: <AddForum/>
                 }
 
             ]
