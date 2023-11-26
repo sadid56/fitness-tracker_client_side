@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const AllSubscriber = () => {
   const axiosPublic = useAxiosPublic();
-  const { data: subscribers, refetch = [] } = useQuery({
+  const { data: subscribers = [], refetch } = useQuery({
     queryKey: ["subscriber"],
     queryFn: async () => {
       const res = await axiosPublic.get("/newsLetters");

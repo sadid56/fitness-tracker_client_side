@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaUserCircle, FaHouseUser, FaUsers } from "react-icons/fa";
+import { FaUserCircle, FaHouseUser, FaUsers, FaUserTie } from "react-icons/fa";
 import { MdLocalActivity, MdPostAdd } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import "./sideber.css";
@@ -70,6 +70,13 @@ const SideBer = () => {
                 to="/dashboard/all-subscriber"
                 className={"flex items-center gap-2"}>
                 <FaUsers /> All Subscriber
+              </NavLink>
+            </li>
+          <li>
+              <NavLink
+                to="/dashboard/all-trainers"
+                className={"flex items-center gap-2"}>
+                <FaUserTie /> All Trainers
               </NavLink>
             </li>
           </>

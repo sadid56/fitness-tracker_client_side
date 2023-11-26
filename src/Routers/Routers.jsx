@@ -16,6 +16,8 @@ import ManageMembers from "../Pages/Dashboard/ManageMembers/ManageMembers";
 import AddForum from "../Pages/Dashboard/AddForum/AddForum";
 import AddClasses from "../Pages/Dashboard/AddClasses/AddClasses";
 import AllSubscriber from "../Pages/Dashboard/AllSubscriber/AllSubscriber";
+import AllTrainers from "../Pages/Dashboard/AllTrainers/AllTrainers";
+import PaymentPage from "../Pages/Dashboard/PaymentPage/PaymentPage";
 
 const Routers = createBrowserRouter([
         {
@@ -84,6 +86,15 @@ const Routers = createBrowserRouter([
                 {
                     path: '/dashboard/all-subscriber',
                     element: <AllSubscriber/>
+                },
+                {
+                    path: '/dashboard/all-trainers',
+                    element: <AllTrainers/>
+                },
+                {
+                    path: '/dashboard/payment-page/:id',
+                    element: <PaymentPage/>,
+                    loader: ({params})=> fetch(`http://localhost:5600/trainers/${params.id}`)
                 }
 
             ]
