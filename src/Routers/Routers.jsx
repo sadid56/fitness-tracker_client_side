@@ -15,6 +15,7 @@ import RecommendedClass from "../Pages/Dashboard/RecommendedClass/RecommendedCla
 import ManageMembers from "../Pages/Dashboard/ManageMembers/ManageMembers";
 import AddForum from "../Pages/Dashboard/AddForum/AddForum";
 import AddClasses from "../Pages/Dashboard/AddClasses/AddClasses";
+import AllSubscriber from "../Pages/Dashboard/AllSubscriber/AllSubscriber";
 
 const Routers = createBrowserRouter([
         {
@@ -78,6 +79,11 @@ const Routers = createBrowserRouter([
                 {
                     path: '/dashboard/add-classes',
                     element: <AddClasses/>
+                },
+                // admin related
+                {
+                    path: '/dashboard/all-subscriber',
+                    element: <AllSubscriber/>
                 }
 
             ]

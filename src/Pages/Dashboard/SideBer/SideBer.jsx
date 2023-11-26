@@ -11,7 +11,8 @@ const SideBer = () => {
   // const [isTrainer] = useTrainer()
   // console.log(isAdmin);
   // console.log(isTrainer);
-  const isTrainer = true;
+  const isTrainer = false;
+  const isAdmin = true;
   return (
     <div>
       <ul id="nav" className="text-xl font-medium space-y-3 p-5">
@@ -58,7 +59,21 @@ const SideBer = () => {
                 <SiGoogleclassroom /> Recommended Classes{" "}
               </NavLink>
             </li>
+          </> 
+          //admin related
+          && 
+          
+          isAdmin && <>
+          
+          <li>
+              <NavLink
+                to="/dashboard/all-subscriber"
+                className={"flex items-center gap-2"}>
+                <FaUsers /> All Subscriber
+              </NavLink>
+            </li>
           </>
+
         )}
 
         <hr />
@@ -71,7 +86,7 @@ const SideBer = () => {
           <NavLink
             to="/dashboard/profile"
             className={"flex items-center gap-2"}>
-            <FaUserCircle /> Profile{" "}
+            <FaUserCircle /> Profile
           </NavLink>
         </li>
       </ul>
