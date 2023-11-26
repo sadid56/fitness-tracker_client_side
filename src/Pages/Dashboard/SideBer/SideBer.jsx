@@ -3,8 +3,8 @@ import { FaUserCircle, FaHouseUser, FaUsers } from "react-icons/fa";
 import { MdLocalActivity, MdPostAdd } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import "./sideber.css";
-import useAdmin from "../../../Hooks/useAdmin";
-import useTrainer from "../../../Hooks/useTrainer";
+// import useAdmin from "../../../Hooks/useAdmin";
+// import useTrainer from "../../../Hooks/useTrainer";
 
 const SideBer = () => {
   // const [isAdmin]= useAdmin()
@@ -31,6 +31,13 @@ const SideBer = () => {
                 to="/dashboard/add-forum"
                 className={"flex items-center gap-2"}>
                 <MdPostAdd/> Add New Forum
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/dashboard/add-classes"
+                className={"flex items-center gap-2"}>
+                <SiGoogleclassroom/> Add New Class
               </NavLink>
             </li>
           </>

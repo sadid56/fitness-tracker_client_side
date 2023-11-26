@@ -14,6 +14,7 @@ import PrivateRoute from "../Private/PrivateRoute";
 import RecommendedClass from "../Pages/Dashboard/RecommendedClass/RecommendedClass";
 import ManageMembers from "../Pages/Dashboard/ManageMembers/ManageMembers";
 import AddForum from "../Pages/Dashboard/AddForum/AddForum";
+import AddClasses from "../Pages/Dashboard/AddClasses/AddClasses";
 
 const Routers = createBrowserRouter([
         {
@@ -73,6 +74,10 @@ const Routers = createBrowserRouter([
                 {
                     path:'/dashboard/add-forum',
                     element: <AddForum/>
+                },
+                {
+                    path: '/dashboard/add-classes',
+                    element: <AddClasses/>
                 }
 
             ]
