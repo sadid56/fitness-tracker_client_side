@@ -21,7 +21,7 @@ const PaymentPage = () => {
                 <button onClick={()=> navigate(-1)} className="btn bg-[#fe1313] px-6 py-2 rounded-md font-medium text-white p-2 text-xl hover:bg-[#c20505]"><TiArrowBack/> Go Back</button>
             </div>
             <div className="mt-10">
-               <Payment/>
+               <Payment trainer={trainer}/>
             </div>
             </div>
         </div>

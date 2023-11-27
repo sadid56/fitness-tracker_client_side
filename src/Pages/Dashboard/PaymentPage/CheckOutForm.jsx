@@ -1,11 +1,14 @@
-
+/* eslint-disable react/prop-types */
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import useAuth from "../../../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
-const CheckOutForm = () => {
+const CheckOutForm = ({trainer}) => {
   const { user } = useAuth();
+  const navigate = useNavigate()
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState("");
@@ -13,25 +16,26 @@ const CheckOutForm = () => {
   const [transactionId, setTransectionId] = useState("");
   const axiosSecure = useAxiosSecure();
   const salary = 20000;
-//   console.log(stripe.confirmCardPayment);
-
+  //   console.log(stripe.confirmCardPayment);
+// console.log(trainer?.name);
   useEffect(() => {
     if (salary > 0) {
-     axiosSecure.post('/create-peyment-intent', {salary: salary})
-     .then(res => {
-        setClientSecret(res.data.clientSecret)
-        // console.log('client secret--->',res.data);
-     })
-     .catch(err => {
-        console.log('fetch error ---> ', err);
-     })
+      axiosSecure
+        .post("/create-peyment-intent", { salary: salary })
+        .then((res) => {
+          setClientSecret(res.data.clientSecret);
+          // console.log('client secret--->',res.data);
+        })
+        .catch((err) => {
+          console.log("fetch error ---> ", err);
+        });
     }
   }, [axiosSecure, salary]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!stripe || !elements ) {
+    if (!stripe || !elements) {
       return;
     }
 
@@ -73,21 +77,28 @@ const CheckOutForm = () => {
       }
     }
 
-     //*now save the payment
-     const payment = {
-        email: user?.email,
-        price: salary,
-        date: new Date(),      
-        status: 'pending',
-        transactionId: paymentIntent.id
-      }
+    //*now save the payment
+    const payment = {
+      name: trainer?.name,
+      // email: user?.email,
+      category: trainer?.category,
+      price: salary,
+      date: new Date(),
+      status: "pending",
+      transactionId: paymentIntent.id,
+    };
 
-      
-      const res = await axiosSecure.post('/payments', payment)
-      if(res.data?.acknowledged){
-        alert('payment success')
-      }
-
+    const res = await axiosSecure.post("/payments", payment);
+    if (res.data?.acknowledged) {
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: `Your have been successfully paid monthly salary in ${trainer?.name} !`,
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      navigate('/dashboard/all-trainer')
+    }
   };
 
   return (

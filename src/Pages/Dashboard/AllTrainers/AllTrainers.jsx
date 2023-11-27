@@ -15,12 +15,18 @@ const AllTrainers = () => {
       return res.data;
     },
   });
-  console.log(trainers);
+  // console.log(trainers);
+  const isPaymentEnabled = (joinDate) => {
+    const currentDate = new Date();
+    const joinDateObject = new Date(joinDate); 
+    const differenceInDays = Math.floor((currentDate - joinDateObject) / (1000 * 60 * 60 * 24));
+    return differenceInDays >= 30;
+  };
   return (
     <div>
       <SectionHelmet title={"Strong | Dashboard-All Trainers"} />
       <SectionTitle title={"All Trainers"} />
-      <div className="overflow-x-auto max-w-3xl mx-auto p-5 shadow-xl border rounded-md">
+      <div className="overflow-x-auto max-w-4xl mx-auto p-5 shadow-xl border rounded-md">
       
         <h2 className="text-xl font-bold btn mb-5">Total Trainers: {trainers?.length} <FaUserTie /> </h2>
         
@@ -33,7 +39,9 @@ const AllTrainers = () => {
               <th className="text-xl">Profile</th>
               <th className="text-xl">Name</th>
               <th className="text-xl">Category</th>
-              {/* <th className="text-xl">Last Payment</th> */}
+              <th className="text-xl">Join Date</th>
+              
+
 
               <th className="text-xl">Salary</th>
               
@@ -62,8 +70,9 @@ const AllTrainers = () => {
                  
                 </td>
                 <td>{trainer?.category}</td>
+                <td>{trainer?.join_date}</td>
                 <th>
-                <button onClick={()=> navigate(`/dashboard/payment-page/${trainer?._id}`)} className="btn btn-success text-white text-xl">Pay</button>
+                <button onClick={()=> navigate(`/dashboard/payment-page/${trainer?._id}`)} className={`btn ${isPaymentEnabled(trainer?.join_date) ? 'btn-success' : 'btn-disabled'} text-white text-xl`} disabled={!isPaymentEnabled(trainer?.join_date)}>Pay</button>
                 </th>
               </tr>
             ))}

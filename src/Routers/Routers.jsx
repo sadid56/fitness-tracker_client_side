@@ -18,6 +18,7 @@ import AddClasses from "../Pages/Dashboard/AddClasses/AddClasses";
 import AllSubscriber from "../Pages/Dashboard/AllSubscriber/AllSubscriber";
 import AllTrainers from "../Pages/Dashboard/AllTrainers/AllTrainers";
 import PaymentPage from "../Pages/Dashboard/PaymentPage/PaymentPage";
+import AllTrainer from "../Pages/Dashboard/allTrainer/AllTrainer";
 
 const Routers = createBrowserRouter([
         {
@@ -95,6 +96,10 @@ const Routers = createBrowserRouter([
                     path: '/dashboard/payment-page/:id',
                     element: <PaymentPage/>,
                     loader: ({params})=> fetch(`http://localhost:5600/trainers/${params.id}`)
+                },
+                {
+                    path: '/dashboard/all-trainer',
+                    element: <AllTrainer/>
                 }
 
             ]

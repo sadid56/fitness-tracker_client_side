@@ -2,17 +2,20 @@
     {
       "name": "Alex Smith",
       "category": "Personal Trainer",
-      "image": "https://i.ibb.co/xSH3zZf/trainer1.webp"
+      "image": "https://i.ibb.co/xSH3zZf/trainer1.webp",
+      "join_date": "2023-11-27"
     },
     {
       "name": "Emily Johnson",
       "category": "Yoga Instructor",
-      "image": "https://i.ibb.co/ccrtSYv/trianer2.webp"
+      "image": "https://i.ibb.co/ccrtSYv/trianer2.webp",
+      "join_date": "2023-11-27"
     },
     {
       "name": "Chris Davis",
       "category": "Strength and Conditioning Coach",
-      "image": "https://i.ibb.co/xSH3zZf/trainer1.webp"
+      "image": "https://i.ibb.co/xSH3zZf/trainer1.webp",
+      "join_date": "2023-11-27"
     }
   ]
   
