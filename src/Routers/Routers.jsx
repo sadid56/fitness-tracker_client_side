@@ -20,6 +20,7 @@ import AllTrainers from "../Pages/Dashboard/AllTrainers/AllTrainers";
 import PaymentPage from "../Pages/Dashboard/PaymentPage/PaymentPage";
 import AllTrainer from "../Pages/Dashboard/allTrainer/AllTrainer";
 import AppliedTrainer from "../Pages/Dashboard/AppliedTrainer/AppliedTrainer";
+import Balance from "../Pages/Dashboard/Balace/Balance";
 
 const Routers = createBrowserRouter([
         {
@@ -105,6 +106,10 @@ const Routers = createBrowserRouter([
                 {
                     path: '/dashboard/applied-trainers',
                     element: <AppliedTrainer/>
+                },
+                {
+                    path:'/dashboard/balance',
+                    element: <Balance/>
                 }
 
             ]

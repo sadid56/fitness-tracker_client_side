@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { FaUserCircle, FaHouseUser, FaUsers, FaUserTie } from "react-icons/fa";
+import { FaUserCircle, FaHouseUser, FaUsers, FaUserTie} from "react-icons/fa";
 import { MdLocalActivity, MdPostAdd } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import "./sideber.css";
 import { BsFileEarmarkPost } from "react-icons/bs";
+import { FaMoneyCheckDollar } from "react-icons/fa6";
 // import useAdmin from "../../../Hooks/useAdmin";
 // import useTrainer from "../../../Hooks/useTrainer";
 
@@ -66,6 +67,13 @@ const SideBer = () => {
           
           isAdmin && <>
           
+          <li>
+              <NavLink
+                to="/dashboard/balance"
+                className={"flex items-center gap-2"}>
+                <FaMoneyCheckDollar /> Balance
+              </NavLink>
+            </li>
           <li>
               <NavLink
                 to="/dashboard/all-subscriber"
