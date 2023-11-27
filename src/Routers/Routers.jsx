@@ -52,18 +52,20 @@ const Routers = createBrowserRouter([
                     path: '/classes-details/:id',
                     element: <ClassesDetails/>,
                     loader: ({params})=> fetch(`http://localhost:5600/classes/${params.id}`)
-                }
+                },
+                {
+                    path: '/community',
+                    element: <Community/>
+                },
             ]
         },
-        {
-            path: '/community',
-            element: <Community/>
-        },
+        
         {
             path: '/dashboard',
             element: <PrivateRoute><Dashboard/></PrivateRoute>,
             children: [
                 // member related
+                
                 {
                     path: '/dashboard/profile',
                     element:<Profile/>

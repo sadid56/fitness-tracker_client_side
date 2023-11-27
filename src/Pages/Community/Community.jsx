@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import SectionHelmet from "../../Components/SectionHelmet";
 import useAxiosPublic from "../../Hooks/useAxioPublic";
-import CommunityNavber from "./CommunityNavber";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
@@ -15,9 +14,9 @@ const Community = () => {
   const [like, setLike] = useState({});
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemPerPage, setItemPerPage] = useState(6);
+  const [itemPerPage, setItemPerPage] = useState(20);
 //   const [count, setCount]= useState(0)
-  const count = 8;
+  const count = 15;
 // console.log(count);
   const numberOfPages = Math.ceil(count / itemPerPage)
   const pages = [...Array(numberOfPages).keys()]
@@ -68,8 +67,7 @@ const Community = () => {
   return (
     <div>
       <SectionHelmet title={"Strong | Community"} />
-      <CommunityNavber />
-      <div className="flex items-center justify-evenly max-w-5xl mx-auto shadow-lg p-6">
+      <div className="flex items-center justify-evenly max-w-5xl mx-auto shadow-lg p-6 mt-20">
         <button
           onClick={() => navigate("/")}
           className="btn lowercase text-xl border border-red-300">
@@ -92,12 +90,15 @@ const Community = () => {
               <div>
                 <h3 className="text-xl font-medium">{post?.name}</h3>
                 <p className="text-sm text-gray-500">{post?.date}</p>
+                {
+                  post?.role === "admin" && <p className="font-medium text-success">Admin</p> || post?.role === "traier" && <p className="font-medium text-success">Trainer</p> || post?.role === "member" && null
+                }
               </div>
             </div>
             <h5 className="font-medium my-5">{post?.description}</h5>
 
             <div>
-              <img src={post?.image ? post?.image : ""} alt="" />
+              <img src={post?.image ? post?.image : ""} className="w-full" alt="" />
             </div>
 
             {/* react  */}

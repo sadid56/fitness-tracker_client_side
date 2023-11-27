@@ -15,6 +15,8 @@ const AddForum = () => {
     const { user } = useAuth();
     const onSubmit = async (data) => {
         // console.log(data);
+     
+        // console.log();
         // img host in imgbb
         const fileImg = { image: data?.image[0] };
         const res = await axiosPublic.post(
@@ -26,12 +28,18 @@ const AddForum = () => {
             },
           }
         );
+
+        const users = await axiosSecure.get('/users')
+        // console.log(users.data);
+        const filerData =   users.data.filter(roleUser => roleUser?.email === user?.email)
+
         const postInfo = {
           name: user?.displayName,
           profile_image: user?.photoURL,
           description: data?.description,
           image: res?.data?.data?.display_url || "",
           date: new Date(),
+          role:filerData[0]?.role,
         };
         try {
           const post = await axiosSecure.post("/community", postInfo);

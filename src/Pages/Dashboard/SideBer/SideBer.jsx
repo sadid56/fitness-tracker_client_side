@@ -5,23 +5,22 @@ import { SiGoogleclassroom } from "react-icons/si";
 import "./sideber.css";
 import { BsFileEarmarkPost } from "react-icons/bs";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
-// import useAdmin from "../../../Hooks/useAdmin";
-// import useTrainer from "../../../Hooks/useTrainer";
+import useAdmin from "../../../Hooks/useAdmin";
+import useTrainer from "../../../Hooks/useTrainer";
 
 const SideBer = () => {
-  // const [isAdmin]= useAdmin()
-  // const [isTrainer] = useTrainer()
+  const [isAdmin]= useAdmin()
+  const [isTrainer] = useTrainer()
   // console.log(isAdmin);
   // console.log(isTrainer);
-  const isTrainer = false;
-  const isAdmin = true;
+  // const isTrainer = false;
+  // const isAdmin = true;
   return (
     <div>
-      <ul id="nav" className="text-xl font-medium space-y-3 p-5">
-        {/* member related */}
+      <ul id="nav" className="text-xl font-medium space-y-3 p-5 h-full">
+        
 
-        {isTrainer ? (
-          <>
+        {isTrainer && <>
             <li>
               <NavLink
                 to="/dashboard/manage-members"
@@ -29,13 +28,7 @@ const SideBer = () => {
                 <FaUsers/> Manage Members
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/dashboard/add-forum"
-                className={"flex items-center gap-2"}>
-                <MdPostAdd/> Add New Forum
-              </NavLink>
-            </li>
+           
             <li>
               <NavLink
                 to="/dashboard/add-classes"
@@ -43,27 +36,9 @@ const SideBer = () => {
                 <SiGoogleclassroom/> Add New Class
               </NavLink>
             </li>
-          </>
-        ) : (
-          <>
-            {" "}
-            <li>
-              <NavLink
-                to="/dashboard/activity"
-                className={"flex items-center gap-2"}>
-                <MdLocalActivity /> Activity Log
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/recommended-class"
-                className={"flex items-center gap-2"}>
-                <SiGoogleclassroom /> Recommended Classes{" "}
-              </NavLink>
-            </li>
-          </> 
-          //admin related
-          && 
+          </> }
+        {  
+        
           
           isAdmin && <>
           
@@ -95,11 +70,46 @@ const SideBer = () => {
                 <BsFileEarmarkPost /> Applied Trainers
               </NavLink>
             </li>
-          </>
+          </> 
 
-        )}
+        }
+
+        {
+          !isAdmin === !isTrainer && <>
+          {" "}
+          <li>
+            <NavLink
+              to="/dashboard/activity"
+              className={"flex items-center gap-2"}>
+              <MdLocalActivity /> Activity Log
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/recommended-class"
+              className={"flex items-center gap-2"}>
+              <SiGoogleclassroom /> Recommended Classes{" "}
+            </NavLink>
+          </li>
+        </> 
+        }
 
         <hr />
+        {
+          isAdmin &&  <li>
+          <NavLink
+            to="/dashboard/add-forum"
+            className={"flex items-center gap-2"}>
+            <MdPostAdd/> Add New Forum
+          </NavLink>
+        </li> || isTrainer &&  <li>
+              <NavLink
+                to="/dashboard/add-forum"
+                className={"flex items-center gap-2"}>
+                <MdPostAdd/> Add New Forum
+              </NavLink>
+            </li>
+        }
         <li>
           <NavLink to="/" className={"flex items-center gap-2"}>
             <FaHouseUser /> Home

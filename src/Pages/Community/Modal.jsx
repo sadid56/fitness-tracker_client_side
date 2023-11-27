@@ -5,12 +5,14 @@ import useAxiosPublic from "../../Hooks/useAxioPublic";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { useRef } from "react";
 
 const Modal = ({refetch}) => {
   const { register, handleSubmit } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const modalRef = useRef(0)
 
   const onSubmit = async (data) => {
     // console.log(data);
@@ -25,12 +27,20 @@ const Modal = ({refetch}) => {
         },
       }
     );
+
+    const users = await axiosSecure.get('/users')
+    // console.log(users.data);
+    const filerData =   users.data.filter(roleUser => roleUser?.email === user?.email)
+
+    
+
     const postInfo = {
       name: user?.displayName,
       profile_image: user?.photoURL,
       description: data?.description,
       image: res?.data?.data?.display_url || "",
       date: new Date(),
+      role:filerData[0]?.role,
     };
     try {
       const post = await axiosSecure.post("/community", postInfo);
@@ -43,26 +53,29 @@ const Modal = ({refetch}) => {
           timer: 1000
         });
         refetch()
+        modalRef.current.reset()
+        const modal = document.getElementById("my_modal_1")
+        modal.close()
       }
     } catch (err) {
       console.log("post error", err);
     }
   };
   return (
-    <div>
+    <div >
       <button
         className="btn lowercase text-xl"
-        onClick={() => document.getElementById("my_modal_3").showModal()}>
+        onClick={() => document.getElementById("my_modal_1").showModal()}>
         <MdOutlinePostAdd /> Post
       </button>
-      <dialog id="my_modal_3" className="modal">
+      <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
           </form>
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-0">
+          <form ref={modalRef}  onSubmit={handleSubmit(onSubmit)} className="card-body pb-0">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Article</span>

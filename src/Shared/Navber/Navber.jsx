@@ -3,11 +3,15 @@ import { FiAlignJustify, FiX } from "react-icons/fi";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
-import './navber.css'
+import "./navber.css";
+import useAdmin from "../../Hooks/useAdmin";
+import useTrainer from "../../Hooks/useTrainer";
 
 const Navber = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useAuth();
+  const [isAdmin] = useAdmin();
+  const [isTrainer] = useTrainer();
 
   const handleLogOut = async () => {
     try {
@@ -19,7 +23,9 @@ const Navber = () => {
   };
 
   return (
-    <nav id="nav" className="fixed z-20 flex justify-between px-5 w-full py-4 bg-[rgba(0,0,0,0.6)]">
+    <nav
+      id="nav"
+      className="fixed top-0 z-20 flex justify-between px-5 w-full py-4 bg-[rgba(0,0,0,0.6)]">
       <h2 className="text-4xl font-semibold text-white">Strong</h2>
       <ul
         className={`flex items-center gap-6 bg-gray-600 text-white p-10 md:p-0 md:text-white md:bg-transparent ${
@@ -37,14 +43,26 @@ const Navber = () => {
           <NavLink to="/trainer">Trainer</NavLink>
         </li>
         <li>
-          <NavLink to='/classes'>Classes</NavLink>
+          <NavLink to="/classes">Classes</NavLink>
         </li>
         <li>
-          <NavLink to='/community'>Community</NavLink>
+          <NavLink to="/community">Community</NavLink>
         </li>
-        <li>
-          <NavLink to='/dashboard'>Dashboard</NavLink>
-        </li>
+        {user && isAdmin && (
+          <li>
+            <NavLink to="/dashboard/balance">Dashboard</NavLink>
+          </li>
+        )}
+        {user && isTrainer && (
+          <li>
+            <NavLink to="/dashboard/manage-members">Dashboard</NavLink>
+          </li>
+        )}
+        {user && !isAdmin === !isTrainer && (
+          <li>
+            <NavLink to="/dashboard/recommended-class">Dashboard</NavLink>
+          </li>
+        )}
       </ul>
       <div className="flex items-center gap-3">
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">

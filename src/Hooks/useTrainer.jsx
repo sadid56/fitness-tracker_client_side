@@ -9,9 +9,10 @@ const useTrainer = () => {
         queryKey: ['trainer'],
         queryFn: async()=>{
            const res = await axiosSecure.get(`/users/${user?.email}`)
-           return res.data?.admin;
+           return res.data?.trainer;
         }
     })
+    console.log(isTrainer, 'trainer');
     return [isTrainer]
 }
  

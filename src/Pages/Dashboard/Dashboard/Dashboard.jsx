@@ -3,11 +3,11 @@ import SideBer from "../SideBer/SideBer";
 
 const Dashboard = () => {
     return ( 
-        <div className="w-full flex h-screen">
-            <div className="w-[25%] bg-slate-300">
+        <div className="w-full flex h-full">
+            <div className="w-[25%] bg-slate-300 fixed h-full overflow-x-auto">
                 <SideBer/>
             </div>
-            <div className="w-[75%] ">
+            <div className="w-[75%] ml-[25%]">
                 <Outlet/>
             </div>
         </div>
