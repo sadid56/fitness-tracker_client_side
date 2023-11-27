@@ -2,9 +2,11 @@
 import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
 
 const AppliedModal = ({ user, refetch }) => {
   const axiosSecure = useAxiosSecure();
+
   const handleAccept = async (id) => {
     const res = await axiosSecure.patch(`/users/${id}`, { role: "trainer" });
     if (res.data.modifiedCount > 0) {
@@ -18,9 +20,42 @@ const AppliedModal = ({ user, refetch }) => {
       modal.close();
     }
   };
+
+  const handleReject = async () => {
+    try {
+      const templateParams = {
+        to_email: user?.email,
+        subject: "Application Rejectoin",
+        message: "Unfortunately, your application has been rejected.",
+      };
+      const res = await emailjs.send(
+        "service_ngz2qsb",
+        "template_tyql4km",
+        templateParams,
+        "JlpXCvdYgzXy6-d-i"
+      );
+      if (res.status === 200) {
+        console.log("Rejection email sent successfully!");
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Rejection Email Send Success !",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        refetch();
+        const modal = document.getElementById("my_modal_3");
+        modal.close();
+      } else {
+        console.error("Failed to send rejection email");
+      }
+    } catch (err) {
+      console.log("Rejectoin error-->", err);
+    }
+  };
+
   return (
     <div>
-      {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <button
         className="btn text-xl"
         onClick={() => document.getElementById("my_modal_3").showModal()}>
@@ -56,7 +91,9 @@ const AppliedModal = ({ user, refetch }) => {
                 className="btn text-xl text-white btn-success">
                 Confirm
               </button>
-              <button className="btn btn-error text-xl text-white">
+              <button
+                onClick={() => handleReject(user?._id)}
+                className="btn btn-error text-xl text-white">
                 Reject
               </button>
             </div>
