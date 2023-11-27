@@ -3,6 +3,7 @@ import { FaUserCircle, FaHouseUser, FaUsers, FaUserTie } from "react-icons/fa";
 import { MdLocalActivity, MdPostAdd } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import "./sideber.css";
+import { BsFileEarmarkPost } from "react-icons/bs";
 // import useAdmin from "../../../Hooks/useAdmin";
 // import useTrainer from "../../../Hooks/useTrainer";
 
@@ -77,6 +78,13 @@ const SideBer = () => {
                 to="/dashboard/all-trainers"
                 className={"flex items-center gap-2"}>
                 <FaUserTie /> All Trainers
+              </NavLink>
+            </li>
+          <li>
+              <NavLink
+                to="/dashboard/applied-trainers"
+                className={"flex items-center gap-2"}>
+                <BsFileEarmarkPost /> Applied Trainers
               </NavLink>
             </li>
           </>

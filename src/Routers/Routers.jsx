@@ -19,6 +19,7 @@ import AllSubscriber from "../Pages/Dashboard/AllSubscriber/AllSubscriber";
 import AllTrainers from "../Pages/Dashboard/AllTrainers/AllTrainers";
 import PaymentPage from "../Pages/Dashboard/PaymentPage/PaymentPage";
 import AllTrainer from "../Pages/Dashboard/allTrainer/AllTrainer";
+import AppliedTrainer from "../Pages/Dashboard/AppliedTrainer/AppliedTrainer";
 
 const Routers = createBrowserRouter([
         {
@@ -100,6 +101,10 @@ const Routers = createBrowserRouter([
                 {
                     path: '/dashboard/all-trainer',
                     element: <AllTrainer/>
+                },
+                {
+                    path: '/dashboard/applied-trainers',
+                    element: <AppliedTrainer/>
                 }
 
             ]
