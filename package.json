@@ -42,7 +42,8 @@
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.1",
     "sweetalert2": "^11.10.1",
-    "swiper": "^11.0.5"
+    "swiper": "^11.0.5",
+    "react-infinite-scroll-component": "^6.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",

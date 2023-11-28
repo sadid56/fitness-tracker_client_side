@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SectionHelmet from "../Components/SectionHelmet";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
@@ -13,13 +13,14 @@ const Login = () => {
   const { signIn, googleLogin } = useAuth();
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
+  const location = useLocation()
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
     // console.log(data);
     try {
       await signIn(data?.email, data?.password);
       toast.success("Login Success !");
-      navigate("/");
+      navigate(location?.state ? location?.state : '/')
     } catch (err) {
       toast.error(err.message);
     }
@@ -38,7 +39,7 @@ const Login = () => {
         };
         await axiosPublic.post("/users", userInfo);
         toast.success("Google Login Success !");
-        navigate("/");
+        navigate(location?.state ? location?.state : '/')
       }
     } catch (err) {
       toast.error(err.message);

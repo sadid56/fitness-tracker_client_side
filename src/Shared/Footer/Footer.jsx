@@ -1,7 +1,7 @@
 import logo from '../../assets/icons/logo.png'
 const Footer = () => {
     return ( 
-        <footer className="p-10 bg-[#051026] text-white">
+        <footer className="p-10 bg-[#051026] text-white mt-10">
   <div className="max-w-6xl mx-auto footer">
   <nav>
     <div className='w-[150px]'>

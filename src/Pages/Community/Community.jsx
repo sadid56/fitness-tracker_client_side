@@ -8,15 +8,16 @@ import { IoArrowBack } from "react-icons/io5";
 import { SiVirustotal } from "react-icons/si";
 import Modal from "./Modal";
 import Loader from "../../Shared/Loader/Loader";
+import { useEffect } from "react";
 
 const Community = () => {
   const axiosPublic = useAxiosPublic();
   const [like, setLike] = useState({});
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemPerPage, setItemPerPage] = useState(20);
-//   const [count, setCount]= useState(0)
-  const count = 15;
+  const [itemPerPage, setItemPerPage] = useState(6);
+  const [count, setCount]= useState(0)
+  // const count = 15;
 // console.log(count);
   const numberOfPages = Math.ceil(count / itemPerPage)
   const pages = [...Array(numberOfPages).keys()]
@@ -33,12 +34,13 @@ const Community = () => {
     },
     
   });
+  console.log(posts);
 
-//   useEffect(()=>{
-//     fetch('http://localhost:5600/pageCount')
-//     .then(res => res.json())
-//     .then(data => setCount(data))
-//   },[])
+  useEffect(()=>{
+    fetch('http://localhost:5600/pageCount')
+    .then(res => res.json())
+    .then(data => setCount(data.count))
+  },[])
   // console.log(posts);
 
   const handleLike = (id) => {
@@ -59,9 +61,9 @@ const Community = () => {
     return <Loader />;
   }
   const handleItemsPerPage = e => {
-    const val = parseInt(e.target.value);
+    const value = parseInt(e.target.value);
     // console.log(val);
-    setItemPerPage(val);
+    setItemPerPage(value);
     setCurrentPage(0);
 }
   return (
@@ -115,6 +117,7 @@ const Community = () => {
 
       {/* pagination */}
       <div className="join flex justify-center my-5 bg-slate-500 max-w-5xl mx-auto py-2 space-x-2">
+        <button onClick={()=> setCurrentPage(Math.max(currentPage - 1, 0))} className="btn" >Prev</button>
         {
             pages.map(page => <button onClick={()=> setCurrentPage(page)} className={`btn text-xl ${currentPage === page ? 'bg-red-500 text-white border-none' : undefined}` } key={page}>{page}</button>)
         }
@@ -124,6 +127,7 @@ const Community = () => {
                     <option value="20">20</option>
                     <option value="50">50</option>
                 </select>
+                <button onClick={()=> setCurrentPage(currentPage + 1)} className="btn">next</button>
       </div>
     </div>
   );

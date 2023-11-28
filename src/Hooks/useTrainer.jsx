@@ -5,7 +5,7 @@ import useAxiosSecure from "./useAxiosSecure"
 const useTrainer = () => {
     const {user, loading} = useAuth()
     const axiosSecure = useAxiosSecure()
-    const {data: isTrainer} = useQuery({
+    const {data: isTrainer, isLoading:trainerLoader} = useQuery({
         queryKey: ['trainer'],
         enabled: !loading && !!localStorage.getItem("access-token"),
         queryFn: async()=>{
@@ -14,7 +14,7 @@ const useTrainer = () => {
         }
     })
     console.log(isTrainer, 'trainer');
-    return [isTrainer]
+    return [isTrainer, trainerLoader]
 }
  
 export default useTrainer;

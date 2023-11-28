@@ -22,6 +22,8 @@ import AllTrainer from "../Pages/Dashboard/allTrainer/AllTrainer";
 import AppliedTrainer from "../Pages/Dashboard/AppliedTrainer/AppliedTrainer";
 import Balance from "../Pages/Dashboard/Balace/Balance";
 import ClassSchedule from "../Pages/Dashboard/classSchedule/ClassSchedule";
+import TrainerRouter from "../Private/TrainerRouter";
+import AdminRouter from "../Private/AdminRoutes";
 
 const Routers = createBrowserRouter([
         {
@@ -70,54 +72,54 @@ const Routers = createBrowserRouter([
                 
                 {
                     path: '/dashboard/profile',
-                    element:<Profile/>
+                    element:<PrivateRoute><Profile/></PrivateRoute>
                 },
                 {
                     path: '/dashboard/recommended-class',
-                    element: <RecommendedClass/>
+                    element: <PrivateRoute><RecommendedClass/></PrivateRoute>
                 },
                 {
                     path: '/dashboard/class-schedule',
-                    element: <ClassSchedule/>
+                    element: <PrivateRoute><ClassSchedule/></PrivateRoute>
                 },
                 // trainer related
                 {
                     path: '/dashboard/manage-members',
-                    element: <ManageMembers/>
+                    element: <PrivateRoute><TrainerRouter><ManageMembers/></TrainerRouter></PrivateRoute>
                 },
                 {
                     path:'/dashboard/add-forum',
-                    element: <AddForum/>
+                    element: <PrivateRoute><TrainerRouter><AddForum/></TrainerRouter></PrivateRoute>
                 },
                 {
                     path: '/dashboard/add-classes',
-                    element: <AddClasses/>
+                    element: <PrivateRoute><TrainerRouter><AddClasses/></TrainerRouter></PrivateRoute>
                 },
                 // admin related
                 {
                     path: '/dashboard/all-subscriber',
-                    element: <AllSubscriber/>
+                    element: <PrivateRoute><AdminRouter><AllSubscriber/></AdminRouter></PrivateRoute>
                 },
                 {
                     path: '/dashboard/all-trainers',
-                    element: <AllTrainers/>
+                    element: <PrivateRoute><AdminRouter><AllTrainers/></AdminRouter></PrivateRoute>
                 },
                 {
                     path: '/dashboard/payment-page/:id',
-                    element: <PaymentPage/>,
+                    element: <PrivateRoute><AdminRouter><PaymentPage/></AdminRouter></PrivateRoute>,
                     loader: ({params})=> fetch(`http://localhost:5600/trainers/${params.id}`)
                 },
                 {
                     path: '/dashboard/all-trainer',
-                    element: <AllTrainer/>
+                    element: <PrivateRoute><AdminRouter><AllTrainer/></AdminRouter></PrivateRoute>
                 },
                 {
                     path: '/dashboard/applied-trainers',
-                    element: <AppliedTrainer/>
+                    element: <PrivateRoute><AdminRouter><AppliedTrainer/></AdminRouter></PrivateRoute>
                 },
                 {
                     path:'/dashboard/balance',
-                    element: <Balance/>
+                    element: <PrivateRoute><AdminRouter><Balance/></AdminRouter></PrivateRoute>
                 }
 
             ]
