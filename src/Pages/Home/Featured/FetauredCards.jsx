@@ -7,7 +7,7 @@ const FeaturedCards = ({card}) => {
         <figure><img src={icon} className="w-20" /></figure>
         <div className="card-body">
           <h2 className=" text-center text-2xl font-bold">{title}</h2>
-          <p className="text-center text-gray-500">{description}</p>
+          <p className="text-center text-gray-500 cursive-font">{description}</p>
         </div>
       </div>
     

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaUserCircle, FaHouseUser, FaUsers, FaUserTie} from "react-icons/fa";
+import { FaUserCircle, FaHouseUser, FaUsers, FaUserTie, FaCalendar} from "react-icons/fa";
 import { MdLocalActivity, MdPostAdd } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import "./sideber.css";
@@ -89,6 +89,13 @@ const SideBer = () => {
               to="/dashboard/recommended-class"
               className={"flex items-center gap-2"}>
               <SiGoogleclassroom /> Recommended Classes{" "}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/class-schedule"
+              className={"flex items-center gap-2"}>
+              <FaCalendar /> Classes Schedule{" "}
             </NavLink>
           </li>
         </> 

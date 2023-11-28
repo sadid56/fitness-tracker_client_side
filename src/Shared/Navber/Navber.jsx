@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import "./navber.css";
 import useAdmin from "../../Hooks/useAdmin";
 import useTrainer from "../../Hooks/useTrainer";
+import logo from '../../assets/icons/logo.png'
 
 const Navber = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +27,9 @@ const Navber = () => {
     <nav
       id="nav"
       className="fixed top-0 z-20 flex justify-between px-5 w-full py-4 bg-[rgba(0,0,0,0.6)]">
-      <h2 className="text-4xl font-semibold text-white">Strong</h2>
+      <div className="w-[150px]">
+        <img src={logo} className="w-full" alt="" />
+      </div>
       <ul
         className={`flex items-center gap-6 bg-gray-600 text-white p-10 md:p-0 md:text-white md:bg-transparent ${
           isOpen

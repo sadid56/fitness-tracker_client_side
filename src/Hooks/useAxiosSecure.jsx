@@ -1,6 +1,7 @@
 import axios from "axios";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const useAxios = axios.create({
   baseURL: "http://localhost:5600",
@@ -10,6 +11,7 @@ const useAxiosSecure = () => {
   const { logOut } = useAuth();
   const navigate = useNavigate();
 
+useEffect(()=>{
   useAxios.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("access-token");
@@ -21,6 +23,7 @@ const useAxiosSecure = () => {
       return Promise.reject(error);
     }
   );
+},[])
 
   useAxios.interceptors.response.use(
     (response) => {

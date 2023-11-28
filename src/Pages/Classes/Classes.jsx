@@ -5,6 +5,7 @@ import SectionTitle from "../../Components/SectionTitle";
 import Cover from "../../Components/Cover";
 import img from "../../assets/images/slider2.jpg";
 import { useNavigate } from "react-router-dom";
+import Schedule from "../../Components/Schedule";
 
 const Classes = () => {
   const axiosSecure = useAxiosSecure();
@@ -21,6 +22,7 @@ const Classes = () => {
     <div>
       <SectionHelmet title={"Strong | Classes"} />
       <Cover img={img} title={"Our Classes"} />
+      <Schedule/>
       <SectionTitle
         title={"Our Classes"}
         description={"Chose Your Best class."}

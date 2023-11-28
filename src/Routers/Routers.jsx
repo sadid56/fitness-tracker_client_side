@@ -21,6 +21,7 @@ import PaymentPage from "../Pages/Dashboard/PaymentPage/PaymentPage";
 import AllTrainer from "../Pages/Dashboard/allTrainer/AllTrainer";
 import AppliedTrainer from "../Pages/Dashboard/AppliedTrainer/AppliedTrainer";
 import Balance from "../Pages/Dashboard/Balace/Balance";
+import ClassSchedule from "../Pages/Dashboard/classSchedule/ClassSchedule";
 
 const Routers = createBrowserRouter([
         {
@@ -32,14 +33,7 @@ const Routers = createBrowserRouter([
                     path: '/',
                     element: <Home/>
                 },
-                {
-                    path: '/registration',
-                    element: <Registration/>
-                },
-                {
-                    path: '/login',
-                    element: <Login/>
-                },
+               
                 {
                     path: '/gallery',
                     element: <Gallery/>
@@ -59,6 +53,14 @@ const Routers = createBrowserRouter([
                 },
             ]
         },
+        {
+            path: '/registration',
+            element: <Registration/>
+        },
+        {
+            path: '/login',
+            element: <Login/>
+        },
         
         {
             path: '/dashboard',
@@ -73,6 +75,10 @@ const Routers = createBrowserRouter([
                 {
                     path: '/dashboard/recommended-class',
                     element: <RecommendedClass/>
+                },
+                {
+                    path: '/dashboard/class-schedule',
+                    element: <ClassSchedule/>
                 },
                 // trainer related
                 {
