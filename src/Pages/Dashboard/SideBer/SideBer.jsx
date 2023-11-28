@@ -75,7 +75,7 @@ const SideBer = () => {
         }
 
         {
-          !isAdmin === !isTrainer && <>
+          !isAdmin && !isTrainer && <>
           {" "}
           <li>
             <NavLink

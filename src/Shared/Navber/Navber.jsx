@@ -58,11 +58,12 @@ const Navber = () => {
             <NavLink to="/dashboard/manage-members">Dashboard</NavLink>
           </li>
         )}
-        {user && !isAdmin === !isTrainer && (
-          <li>
-            <NavLink to="/dashboard/recommended-class">Dashboard</NavLink>
-          </li>
-        )}
+        {
+          user && !isAdmin && !isTrainer && <li>
+          <NavLink to="/dashboard/recommended-class">Dashboard</NavLink>
+        </li>
+        }
+        
       </ul>
       <div className="flex items-center gap-3">
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
