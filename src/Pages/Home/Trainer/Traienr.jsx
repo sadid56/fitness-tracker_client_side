@@ -8,7 +8,7 @@ import { FaInstagram } from "react-icons/fa";
 const Trainer = () => {
   const axiosPublic = useAxiosPublic();
   const { data: trainers = [] } = useQuery({
-    queryKey: "trainer",
+    queryKey: "team",
     queryFn: async () => {
       const res = await axiosPublic.get("/trainers");
       return res.data;
@@ -21,7 +21,7 @@ const Trainer = () => {
         description={"Our Professional Trainers."}
       />
       <div className="grid grid-cols-3 gap-3">
-        {trainers.map((trainer) => (
+        {trainers.slice(0,3).map((trainer) => (
           <div
             key={trainer?._id}
             className="group relative cursor-pointer items-center justify-center overflow-hidden ">

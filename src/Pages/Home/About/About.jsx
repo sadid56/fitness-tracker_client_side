@@ -8,6 +8,7 @@ const About = () => {
                 <img src={aboutImg} className='w-full' alt="" />
             </div>
             <div className='flex-1 space-y-5'>
+              
             <div className="flex items-center gap-4">
             <div className="border border-[#fe1313] w-[60px]"></div>
             <p className="text-xl font-medium text-[#fe1313] uppercase">About our gym</p>

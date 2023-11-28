@@ -24,6 +24,10 @@ import Balance from "../Pages/Dashboard/Balace/Balance";
 import ClassSchedule from "../Pages/Dashboard/classSchedule/ClassSchedule";
 import TrainerRouter from "../Private/TrainerRouter";
 import AdminRouter from "../Private/AdminRoutes";
+import TrainersPage from "../Pages/TrainersPage/TrainersPage";
+import TrainerDetails from "../Pages/TrainersPage/TrainerDetails";
+import BeATrainer from "../Pages/TrainersPage/BeATrainer";
+import TrainerBooked from "../Pages/TrainersPage/TrainerBooked";
 
 const Routers = createBrowserRouter([
         {
@@ -39,6 +43,23 @@ const Routers = createBrowserRouter([
                 {
                     path: '/gallery',
                     element: <Gallery/>
+                },
+                {
+                    path: '/trainers',
+                    element: <TrainersPage/>
+                },
+                {
+                    path: '/trainer-booked',
+                    element: <PrivateRoute><TrainerBooked/></PrivateRoute>
+                },
+                {
+                    path: '/trainerDetails/:id',
+                    element: <TrainerDetails/>,
+                    loader: ({params})=> fetch(`http://localhost:5600/trainers/${params.id}`)
+                },
+                {
+                    path: '/be-a-trainer',
+                    element: <BeATrainer/>
                 },
                 {
                     path: '/classes',
@@ -89,7 +110,7 @@ const Routers = createBrowserRouter([
                 },
                 {
                     path:'/dashboard/add-forum',
-                    element: <PrivateRoute><TrainerRouter><AddForum/></TrainerRouter></PrivateRoute>
+                    element: <PrivateRoute><AddForum/></PrivateRoute>
                 },
                 {
                     path: '/dashboard/add-classes',

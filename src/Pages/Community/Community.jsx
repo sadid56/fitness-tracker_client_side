@@ -16,11 +16,11 @@ const Community = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
   const [itemPerPage, setItemPerPage] = useState(6);
-  const [count, setCount]= useState(0)
+  const [count, setCount] = useState(0);
   // const count = 15;
-// console.log(count);
-  const numberOfPages = Math.ceil(count / itemPerPage)
-  const pages = [...Array(numberOfPages).keys()]
+  // console.log(count);
+  const numberOfPages = Math.ceil(count / itemPerPage);
+  const pages = [...Array(numberOfPages).keys()];
 
   const {
     data: posts = [],
@@ -29,18 +29,19 @@ const Community = () => {
   } = useQuery({
     queryKey: "post",
     queryFn: async () => {
-      const res = await axiosPublic.get(`/community?page=${currentPage}&size=${itemPerPage}`);
+      const res = await axiosPublic.get(
+        `/community?page=${currentPage}&size=${itemPerPage}`
+      );
       return res.data;
     },
-    
   });
   console.log(posts);
 
-  useEffect(()=>{
-    fetch('http://localhost:5600/pageCount')
-    .then(res => res.json())
-    .then(data => setCount(data.count))
-  },[])
+  useEffect(() => {
+    fetch("http://localhost:5600/pageCount")
+      .then((res) => res.json())
+      .then((data) => setCount(data.count));
+  }, []);
   // console.log(posts);
 
   const handleLike = (id) => {
@@ -60,12 +61,12 @@ const Community = () => {
   if (isLoading) {
     return <Loader />;
   }
-  const handleItemsPerPage = e => {
+  const handleItemsPerPage = (e) => {
     const value = parseInt(e.target.value);
     // console.log(val);
     setItemPerPage(value);
     setCurrentPage(0);
-}
+  };
   return (
     <div>
       <SectionHelmet title={"Strong | Community"} />
@@ -92,15 +93,23 @@ const Community = () => {
               <div>
                 <h3 className="text-xl font-medium">{post?.name}</h3>
                 <p className="text-sm text-gray-500">{post?.date}</p>
-                {
-                  post?.role === "admin" && <p className="font-medium text-success">Admin</p> || post?.role === "traier" && <p className="font-medium text-success">Trainer</p> || post?.role === "member" && null
-                }
+                {(post?.role === "admin" && (
+                  <p className="font-medium text-success">Admin</p>
+                )) ||
+                  (post?.role === "traier" && (
+                    <p className="font-medium text-success">Trainer</p>
+                  )) ||
+                  (post?.role === "member" && null)}
               </div>
             </div>
             <h5 className="font-medium my-5">{post?.description}</h5>
 
             <div>
-              <img src={post?.image ? post?.image : ""} className="w-full" alt="" />
+              <img
+                src={post?.image ? post?.image : ""}
+                className="w-full"
+                alt=""
+              />
             </div>
 
             {/* react  */}
@@ -117,17 +126,37 @@ const Community = () => {
 
       {/* pagination */}
       <div className="join flex justify-center my-5 bg-slate-500 max-w-5xl mx-auto py-2 space-x-2">
-        <button onClick={()=> setCurrentPage(Math.max(currentPage - 1, 0))} className="btn" >Prev</button>
-        {
-            pages.map(page => <button onClick={()=> setCurrentPage(page)} className={`btn text-xl ${currentPage === page ? 'bg-red-500 text-white border-none' : undefined}` } key={page}>{page}</button>)
-        }
-         <select className="input" value={itemPerPage} onChange={handleItemsPerPage} name="" id="">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                </select>
-                <button onClick={()=> setCurrentPage(currentPage + 1)} className="btn">next</button>
+        <button
+          onClick={() => setCurrentPage(Math.max(currentPage - 1, 0))}
+          className="btn">
+          Prev
+        </button>
+        {pages.map((page) => (
+          <button
+            onClick={() => setCurrentPage(page)}
+            className={`btn text-xl ${
+              currentPage === page
+                ? "bg-red-500 text-white border-none"
+                : undefined
+            }`}
+            key={page}>
+            {page}
+          </button>
+        ))}
+        <select
+          className="input"
+          value={itemPerPage}
+          onChange={handleItemsPerPage}
+          name=""
+          id="">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+        <button onClick={() => setCurrentPage(currentPage + 1)} className="btn">
+          next
+        </button>
       </div>
     </div>
   );
