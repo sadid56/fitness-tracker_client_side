@@ -20,16 +20,16 @@ const Blog = () => {
         title={"Blog"}
         description={"Highlights of recent blogs."}
       />
-      <div className="flex items-start gap-6">
-        <div className="flex-1 ">
-          <img src={blogImg} className="w-full h-full rounded-md" alt="" />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="flex justify-center ">
+          <img src={blogImg} className="w-full md:w-[500px] md:rounded h-full" alt="" />
         </div>
-        <div>
-          <div className="flex-1 grid grid-cols-2 gap-3">
+        <div className="">
+          <div className="  grid md:grid-cols-2 gap-3 px-5">
             {blogs.slice(0, 6).map((blog) => (
               <div
                 key={blog._id}
-                className="card border hover:border-[#fe1313]">
+                className="card w-full border hover:border-[#fe1313]">
                 <div className="card-body">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center justify-center gap-4">

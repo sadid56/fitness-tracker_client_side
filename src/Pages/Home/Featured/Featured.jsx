@@ -21,7 +21,7 @@ const Featured = () => {
         title={"Featured"}
         description={"This is Our Featured Section."}
       />
-      <div className="grid grid-cols-3 gap-5 max-w-6xl mx-auto">
+      <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto px-5">
         {
             featured.map(card => <FeaturedCards key={card?._id} card={card}/>)
         }

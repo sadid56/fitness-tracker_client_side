@@ -27,19 +27,19 @@ const Testimonial = () => {
         description={"What say our clients ?"}
       />
       <div
-        className="hero min-h-screen bg-fixed"
+        className="hero py-20  bg-fixed overflow-x-hidden"
         style={{
           backgroundImage: `url(${bgImg})`,
         }}>
         <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-[380px] md:max-w-2xl  lg:max-w-5xl mx-auto">
             <Swiper
               navigation={true}
               modules={[Navigation]}
               className="mySwiper">
               {reviews.map((review) => (
                 <SwiperSlide key={review._id}>
-                  <div>
+                  <div className="space-y-5">
                     <div className="flex items-center justify-center gap-4">
                       <div className="avatar">
                         <div className="w-16 rounded-full">
@@ -54,7 +54,7 @@ const Testimonial = () => {
                     </div>
                     <div className="max-w-4xl mx-auto">
                         <h3 className="text-2xl font-semibold text-[#fe1313]">{review?.title}</h3>
-                        <p className="text-xl text-gray-300">{review?.description}</p>
+                        <p className="text-xl text-gray-300 mt-5">{review?.description}</p>
                     </div>
                   </div>
                 </SwiperSlide>

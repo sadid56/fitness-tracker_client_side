@@ -26,7 +26,7 @@ const Navber = () => {
   return (
     <nav
       id="nav"
-      className="fixed top-0 z-20 flex justify-between px-5 w-full py-4 bg-[rgba(0,0,0,0.6)]">
+      className="fixed top-0 z-20 flex justify-between md:px-5 w-full py-4 bg-[rgba(0,0,0,0.6)]">
       <div className="w-[150px]">
         <img src={logo} className="w-full" alt="" />
       </div>

@@ -13,7 +13,7 @@ const NewsLetter = () => {
     const name = form.name.value;
     const email = form.email.value;
 
-    console.log(name, email);
+    // console.log(name, email);
     const letter = { name, email };
 
     try {
@@ -33,7 +33,7 @@ const NewsLetter = () => {
     }
   };
   return (
-    <div className="flex justify-center my-10">
+    <div className="flex justify-center my-10 px-5">
       <div className="flex flex-col md:flex-row items-center gap-6">
         <div className="flex flex-col md:flex-row items-center gap-3">
           <img src={logo} className="w-16" alt="" />
@@ -46,30 +46,34 @@ const NewsLetter = () => {
             </p>
           </div>
         </div>
-        <form action="" onSubmit={handleSubmit}>
-          <div className="join">
+        <form  onSubmit={handleSubmit}>
+          <div className="md:join">
             <input
               type="text"
               name="name"
               defaultValue={user && user?.displayName}
               required
-              className="input input-bordered join-item"
+              className="input input-bordered md:join-item w-full"
               placeholder="Name"
             />
+            <br />
             <input
               type="email"
               name="email"
               defaultValue={user && user?.email}
               required
-              className="input input-bordered join-item"
+              className="input input-bordered md:join-item w-full my-3"
               placeholder="Email"
-            />
+            /> <br />
+            <div className="flex justify-center">
             <button
               disabled={!user}
               type="submit"
-              className="btn join-item rounded-r-full bg-[#fe1313] text-xl text-white hover:bg-[#9d3434]">
+              className="btn hidden md:flex  rounded-r-full bg-[#fe1313] text-xl text-white hover:bg-[#9d3434]">
               Subscribe
             </button>
+            <button disabled={!user} type="submit" className="btn bg-[#fe1313] text-xl text-white md:hidden">Subscribe</button>
+            </div>
           </div>
         </form>
       </div>
