@@ -27,7 +27,7 @@ const Community = () => {
     refetch,
     isLoading,
   } = useQuery({
-    queryKey: "post",
+    queryKey: ["post", currentPage, itemPerPage],
     queryFn: async () => {
       const res = await axiosPublic.get(
         `/community?page=${currentPage}&size=${itemPerPage}`

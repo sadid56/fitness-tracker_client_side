@@ -28,6 +28,8 @@ import TrainersPage from "../Pages/TrainersPage/TrainersPage";
 import TrainerDetails from "../Pages/TrainersPage/TrainerDetails";
 import BeATrainer from "../Pages/TrainersPage/BeATrainer";
 import TrainerBooked from "../Pages/TrainersPage/TrainerBooked";
+import ManageSlot from "../Pages/Dashboard/manageSlot/ManageSlot";
+import ActivityLog from "../Pages/Dashboard/ActivityLog/ActivityLog";
 
 const Routers = createBrowserRouter([
         {
@@ -103,10 +105,18 @@ const Routers = createBrowserRouter([
                     path: '/dashboard/class-schedule',
                     element: <PrivateRoute><ClassSchedule/></PrivateRoute>
                 },
+                {
+                    path: '/dashboard/activity-log',
+                    element: <PrivateRoute><ActivityLog/></PrivateRoute>
+                },
                 // trainer related
                 {
                     path: '/dashboard/manage-members',
                     element: <PrivateRoute><TrainerRouter><ManageMembers/></TrainerRouter></PrivateRoute>
+                },
+                {
+                    path: '/dashboard/manage-slot',
+                    element: <PrivateRoute><TrainerRouter><ManageSlot/></TrainerRouter></PrivateRoute>
                 },
                 {
                     path:'/dashboard/add-forum',

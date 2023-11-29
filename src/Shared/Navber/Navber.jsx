@@ -63,7 +63,7 @@ const Navber = () => {
         )}
         {
           user && !isAdmin && !isTrainer && <li>
-          <NavLink to="/dashboard/recommended-class">Dashboard</NavLink>
+          <NavLink to="/dashboard/activity-log">Dashboard</NavLink>
         </li>
         }
         

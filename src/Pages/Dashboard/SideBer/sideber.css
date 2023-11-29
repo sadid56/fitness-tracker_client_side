@@ -1,5 +1,5 @@
-#nav a.active{
-    border-bottom: 2px solid red;
+#side a.active{
+    border-bottom: 2px solid navy;
     width: fit-content;
-    color: red;
+    color: navy;
 }

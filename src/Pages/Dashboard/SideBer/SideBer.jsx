@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaUserCircle, FaHouseUser, FaUsers, FaUserTie, FaCalendar} from "react-icons/fa";
+import { FaUserCircle, FaHouseUser, FaUsers, FaUserTie, FaCalendar, FaTimes} from "react-icons/fa";
 import { MdLocalActivity, MdPostAdd } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import "./sideber.css";
@@ -17,10 +17,17 @@ const SideBer = () => {
   // const isAdmin = true;
   return (
     <div>
-      <ul id="nav" className="text-xl font-medium space-y-3 p-5 h-full">
+      <ul id="side" className="text-xl text-white font-medium space-y-5 p-5 h-full">
         
 
         {isTrainer && <>
+            <li>
+              <NavLink
+                to="/dashboard/manage-slot"
+                className={"flex items-center gap-2"}>
+                <FaTimes/> Manage Slot
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 to="/dashboard/manage-members"
@@ -79,7 +86,7 @@ const SideBer = () => {
           {" "}
           <li>
             <NavLink
-              to="/dashboard/activity"
+              to="/dashboard/activity-log"
               className={"flex items-center gap-2"}>
               <MdLocalActivity /> Activity Log
             </NavLink>
