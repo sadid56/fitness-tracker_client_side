@@ -17,7 +17,7 @@ const SideBer = () => {
   // const isAdmin = true;
   return (
     <div>
-      <ul id="side" className="text-xl text-white font-medium space-y-5 p-5 h-full">
+      <ul id="side" className="text-xl text-white font-medium space-y-5 p-5 md:h-full">
         
 
         {isTrainer && <>

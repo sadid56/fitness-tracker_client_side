@@ -7,6 +7,7 @@ import "./gallery.css";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React, { useEffect, useRef } from "react";
 import Cover from "../../Components/Cover";
+import Loader from "../../Shared/Loader/Loader";
 
 const Gallery = () => {
   const axiosPublic = useAxiosPublic();
@@ -53,8 +54,8 @@ const Gallery = () => {
     <Cover img={bannerImg} title={'Our Gallery'}/>
 
       <SectionTitle title={"Our Gallery Images"} />
-        {isFetching && <p className="text-center">Loading...</p>}
-      <div className="grid grid-cols-4 gap-3 gap-y-3 max-w-6xl mx-auto">
+        {isFetching && <Loader/>}
+      <div className="grid px-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 gap-y-3 max-w-6xl mx-auto">
       {data?.pages?.map((page, pageIndex) => (
           <React.Fragment key={pageIndex}>
             {page.map((img) => (

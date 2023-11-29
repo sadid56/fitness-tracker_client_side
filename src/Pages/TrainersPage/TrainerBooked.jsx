@@ -71,7 +71,7 @@ const TrainerBooked = () => {
           <FaArrowLeft /> Back
         </button>
       </div>
-      <div className="grid grid-cols-3 gap-5  ">
+      <div className="grid md:grid-cols-2 px-5 lg:grid-cols-3 gap-5  ">
         {planDate.map((plan) => (
           <div
             key={plan.id}

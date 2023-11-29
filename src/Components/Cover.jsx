@@ -3,10 +3,10 @@
 const Cover = ({img, title}) => {
     return ( 
         <div
-        className="hero h-[70vh] relative"
+        className="hero h-[40vh] md:h-[70vh] relative"
         style={{ backgroundImage: `url(${img})` }}> 
         <div className="hero-content bg-red-500 absolute bottom-0 rounded-t-3xl">
-          <h2 className="text-6xl text-center font-bold text-white">
+          <h2 className="text-3xl md:text-6xl text-center font-bold text-white">
             {title}
           </h2>
         </div>

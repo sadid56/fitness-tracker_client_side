@@ -53,7 +53,7 @@ const Balance = () => {
       <SectionHelmet title={"Strong | Dashboard-Balance"} />
       <section className="mx-6 mt-3">
         {/* balance */}
-        <div className="flex items-center gap-5">
+        <div className="flex flex-col md:flex-row items-center gap-5">
           <div className="w-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-md shadow-md p-10">
             <h3 className="text-3xl font-semibold text-gray-300 mb-3">
               Total Remaining Balance
@@ -70,7 +70,7 @@ const Balance = () => {
           </div>
         </div>
         {/* chart */}
-        <div className="flex items-center gap-5 mt-5">
+        <div className="flex flex-col md:flex-row items-center gap-5 mt-5">
           <div className="w-full">
             <PieChart width={300} height={300}>
               <Pie

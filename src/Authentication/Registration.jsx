@@ -41,7 +41,7 @@ const Registration = () => {
     <div className="hero min-h-screen bg-base-200">
       <SectionHelmet title={"Strong | Registration"} />
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="w-[600px]">
+        <div className="md:w-[600px]">
           <Lottie animationData={regisANimatio} loop={true} />
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

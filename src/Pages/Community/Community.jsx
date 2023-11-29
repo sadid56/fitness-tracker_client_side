@@ -38,7 +38,7 @@ const Community = () => {
   console.log(posts);
 
   useEffect(() => {
-    fetch("http://localhost:5600/pageCount")
+    fetch("https://assignment12-server-side-ten.vercel.app/pageCount")
       .then((res) => res.json())
       .then((data) => setCount(data.count));
   }, []);
@@ -68,20 +68,20 @@ const Community = () => {
     setCurrentPage(0);
   };
   return (
-    <div>
+    <div className="px-5">
       <SectionHelmet title={"Strong | Community"} />
-      <div className="flex items-center justify-evenly max-w-5xl mx-auto shadow-lg p-6 mt-20">
+      <div className="flex flex-wrap gap-5 items-center justify-evenly max-w-5xl mx-auto shadow-lg p-6 mt-20">
         <button
           onClick={() => navigate("/")}
           className="btn lowercase text-xl border border-red-300">
           <IoArrowBack /> Back to Home
         </button>
         <Modal refetch={refetch} />
-        <h2 className="text-2xl font-bold btn">
+        <h2 className=" text-xl md:text-2xl font-bold btn">
           <SiVirustotal /> Total Post: {posts?.length}
         </h2>
       </div>
-      <div className="max-w-5xl mx-auto grid grid-cols-2 gap-5 mt-5">
+      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-5 mt-5 ">
         {posts.map((post) => (
           <div key={post._id} className="p-5 border rounded-md">
             <div className="flex items-center gap-2">
@@ -125,7 +125,7 @@ const Community = () => {
       </div>
 
       {/* pagination */}
-      <div className="join flex justify-center my-5 bg-slate-500 max-w-5xl mx-auto py-2 space-x-2">
+      <div className="join flex flex-wrap justify-center my-5 bg-slate-500 max-w-5xl mx-auto py-2 space-x-2">
         <button
           onClick={() => setCurrentPage(Math.max(currentPage - 1, 0))}
           className="btn">

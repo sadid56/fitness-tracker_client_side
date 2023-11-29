@@ -76,11 +76,11 @@ const BeATrainer = () => {
     }
   };
   return (
-    <div className="mt-24">
+    <div className="mt-24 px-5">
       <SectionHelmet title={"Strong | Be A Trainer"} />
       <SectionTitle title={"Be a trainer"} />
       <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="max-w-3xl mx-auto">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid  md:grid-cols-2 gap-4">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Full Name</span>
@@ -170,7 +170,7 @@ const BeATrainer = () => {
             />
           </div>
         </div>
-        <div className="flex items-center gap-5 mt-5 justify-center">
+        <div className="flex flex-wrap items-center gap-5 mt-5 justify-center">
           <h2 className="text-xl font-semibold">Skills: </h2>
           <div className="form-control">
             <label className="cursor-pointer label">

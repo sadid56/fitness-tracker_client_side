@@ -29,7 +29,7 @@ const Profile = () => {
   return (
     <div>
       <SectionHelmet title={"Strong | Dashboard-Profile"} />
-      <div className="w-[500px] mx-auto mt-5 shadow-lg border   p-3">
+      <div className="md:w-[500px] mx-auto mt-5 shadow-lg border   p-3">
         <div className=" relative">
           <img src={bgImg} className="w-full h-[200px]" alt="" />
           <div className="avatar online absolute right-[35%] -bottom-10">

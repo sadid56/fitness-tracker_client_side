@@ -26,12 +26,12 @@ const TrainerDetails = () => {
     <div className="mt-24">
       <SectionHelmet title={'Strong | Trainer Details'} />
       <SectionTitle title={'Trainer Details'} />
-      <div className="flex justify-center items-center gap-5 max-w-6xl mx-auto mt-10">
-        <div className="w-[400px] p-4 border-l-red-500 border-b-red-500 border-l-2 border-b-2">
+      <div className="flex flex-col md:flex-row  justify-center items-center gap-5 max-w-6xl mx-auto mt-10">
+        <div className="mx-5 md:w-[400px] p-4 border-l-red-500 border-b-red-500 border-l-2 border-b-2">
           <img src={trainer?.image} className="" alt="" />
         </div>
-        <div className="space-y-5">
-          <div className="flex items-center gap-4">
+        <div className="space-y-5 text-center md:text-start">
+          <div className="flex justify-center md:justify-start items-center gap-4">
             <div className="border border-[#fe1313] w-[60px]"></div>
             <p className="text-xl font-medium text-[#fe1313] uppercase">
               Trainer Details
@@ -46,7 +46,7 @@ const TrainerDetails = () => {
             Available Time Slot: {trainer?.available_time_day} hours
           </p>
           {/* Displaying time slots as buttons */}
-          <div className="flex flex-wrap">
+          <div className="flex justify-center flex-wrap">
             {generateTimeSlots(trainer?.available_time_day).map((slot, index) => (
               <button
                 key={index}
@@ -57,7 +57,7 @@ const TrainerDetails = () => {
               </button>
             ))}
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex justify-center md:justify-start items-center gap-5">
             <button
               onClick={() => navigate(-1)}
               className="bg-[#fe1313] px-6 py-2 rounded-md font-medium text-white p-2 text-xl hover:bg-[#c20505]"

@@ -58,7 +58,7 @@ const Navber = () => {
         )}
         {user && isTrainer && (
           <li>
-            <NavLink to="/dashboard/manage-members">Dashboard</NavLink>
+            <NavLink to="/dashboard/manage-slot">Dashboard</NavLink>
           </li>
         )}
         {

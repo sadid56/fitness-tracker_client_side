@@ -34,20 +34,20 @@ const ActivityLog = () => {
         <div>
             <SectionHelmet title={"Strong | Dashboard-Activity Log"}/>
             <section className="mx-5">
-            <section className="grid grid-cols-2 gap-5 border p-3 rounded-md shadow-md ">
-            <div className="">
+            <section className="grid  md:grid-cols-2  gap-5 border p-3 rounded-md shadow-md ">
+            <div className="order-2">
             <Calendar date={new Date()} />
           </div>
-          <div className="mt-14 space-y-2 relative">
+          <div className="mt-14 order-1 space-y-2 relative">
             <h3 className=" font-medium text-slate-600">{currentTime}</h3>
             <h2 className="text-3xl font-bold text-slate-700">Total Trainer Slot: {activitySlot?.length}</h2>
-            <div className="absolute bottom-5">
+            <div className="md:absolute bottom-5">
                 <button onClick={()=> navigate('/trainers')} className="btn text-white bg-[#B9005B] text-xl"> <FaArrowLeft/> Trainer Page</button>
             </div>
           </div>
             </section>
 
-          <div className="grid grid-cols-2 gap-5 mt-6">
+          <div className="grid md:grid-cols-2 gap-5 mt-6">
             {
                 activitySlot.map(slot => <div style={{boxShadow: '1px 5px 10px gray'}} className="p-5 border rounded space-y-2" key={slot._id}>
                 <h2 className="text-2xl font-semibold text-slate-700">Trainer Name: {slot?.name}</h2>

@@ -60,7 +60,7 @@ const ManageSlot = () => {
         <div>
             <SectionHelmet title={'Strong | Dashboard-Manage Slot'} />
             <SectionTitle title={"Manage Slot"} description={'Manage a all booked slot'} />
-            <div className="grid grid-cols-2 gap-5 mx-5">
+            <div className="grid md:grid-cols-2 gap-5 mx-5">
                 {
                     manageSlot.map(slot => <div style={{boxShadow: '1px 5px 10px gray'}} className="p-5 border rounded space-y-2" key={slot._id}>
                         <h2 className="text-2xl font-semibold text-slate-700">Name: {slot?.your_name}</h2>

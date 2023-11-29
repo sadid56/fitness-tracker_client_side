@@ -18,7 +18,7 @@ const RecommendedClass = () => {
         <div>
             <SectionHelmet title={'Strong | Dashboard-Recommended Class'} />
             <SectionTitle title={'Your Recommended Class'} description={'Chose Your best class for best fitness.'} />
-            <div className="grid grid-cols-3 gap-5 px-10">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 px-10">
         {
             classes.map(classe => <div className="w-full relative" key={classe?._id}>
                     <img src={classe?.image} className="h-300px w-full" alt="" />

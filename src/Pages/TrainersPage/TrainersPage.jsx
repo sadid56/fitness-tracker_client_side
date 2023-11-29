@@ -22,11 +22,11 @@ const TrainersPage = () => {
         <div>
             <SectionHelmet title={"Strong | Trainers"} />
             <Cover img={img} title={'All Trainers'} />
-            <div className="max-w-6xl mx-auto mt-10">
+            <div className="max-w-6xl mx-auto mt-10 ml-5">
                 <button  onClick={()=> navigate('/be-a-trainer')} className="text-xl btn btn-success text-white">Become a trainer <FaArrowRight/></button>
             </div>
             <SectionTitle title={"All Trainers"}/>
-            <div className="grid grid-cols-3 gap-5 max-w-6xl mx-auto mt-10">
+            <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto mt-10">
                 {
                     trainers.map(trainer => <div key={trainer?._id} className="relative flex flex-col text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
                     <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg h-80 rounded-xl bg-clip-border">
