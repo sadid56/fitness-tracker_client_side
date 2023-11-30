@@ -15,14 +15,19 @@ const TrainerBooked = () => {
   const { trainer, slot } = location.state || {};
   const [planDate, setPlanDate] = useState([]);
   const axiosSecure = useAxiosSecure();
+  const [planAvailability, setPlanAvailability] = useState([]);
   // console.log(trainer, slot);
   useEffect(() => {
     fetch("/trainerBooked.json")
       .then((res) => res.json())
-      .then((data) => setPlanDate(data));
+      .then((data) => {
+        setPlanDate(data)
+        setPlanAvailability(data.map(()=> true))
+      
+      });
   }, []);
 
-  const handleJoin = async (plan) => {
+  const handleJoin = async (plan, index) => {
     const postInfo = {
       trainer_name: trainer?.name,
       trainer_email: trainer?.email,
@@ -38,6 +43,11 @@ const TrainerBooked = () => {
       const res = await axiosSecure.post("/bookeds", postInfo);
     //   console.log(res.data);
     if(res.data.acknowledged){
+      setPlanAvailability((prevAvailability) => [
+        ...prevAvailability.slice(0, index),
+        false,
+        ...prevAvailability.slice(index + 1),
+      ]);
         Swal.fire({
             position: "top-end",
             icon: "success",
@@ -45,6 +55,7 @@ const TrainerBooked = () => {
             showConfirmButton: false,
             timer: 1000
           });
+         
     }
     } catch (err) {
       console.log("booked post err --->", err);
@@ -72,10 +83,15 @@ const TrainerBooked = () => {
         </button>
       </div>
       <div className="grid md:grid-cols-2 px-5 lg:grid-cols-3 gap-5  ">
-        {planDate.map((plan) => (
-          <div
-            key={plan.id}
-            className="relative flex w-full flex-col rounded-xl bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-border p-8 text-white shadow-md shadow-pink-500/40">
+        {planDate.map((plan,index) => (
+           <div
+           key={plan.id}
+           className={`relative flex w-full flex-col rounded-xl ${
+             planAvailability[index]
+               ? "bg-gradient-to-tr from-pink-600 to-pink-400"
+               : "bg-gray-300"
+           } bg-clip-border p-8 text-white shadow-md shadow-pink-500/40`}
+         >
             <div className="relative pb-8 m-0 mb-8 overflow-hidden text-center text-gray-700 bg-transparent border-b rounded-none shadow-none border-white/10 bg-clip-border">
               <p className="block font-sans text-sm antialiased font-normal leading-normal text-white uppercase">
                 {plan?.ranks}
@@ -149,12 +165,18 @@ const TrainerBooked = () => {
               </ul>
             </div>
             <div className="p-0 mt-12">
-              <button
-                onClick={() => handleJoin(plan)}
-                className="block w-full select-none rounded-lg bg-white py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-pink-500 shadow-md shadow-blue-gray-500/10 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-gray-500/20 focus:scale-[1.02] focus:opacity-[0.85] focus:shadow-none active:scale-100 active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            <button
+                onClick={() => handleJoin(plan, index)}
+                className={`block w-full select-none rounded-lg ${
+                  planAvailability[index]
+                    ? "bg-white text-pink-500"
+                    : "bg-gray-500 text-gray-300 pointer-events-none"
+                } py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase shadow-md shadow-blue-gray-500/10 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-gray-500/20 focus:scale-[1.02] focus:opacity-[0.85] focus:shadow-none active:scale-100 active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
                 type="button"
-                data-ripple-dark="true">
-                Join Now
+                data-ripple-dark="true"
+                disabled={!planAvailability[index]}
+              >
+                {planAvailability[index] ? "Join Now" : "Unavailable"}
               </button>
             </div>
           </div>

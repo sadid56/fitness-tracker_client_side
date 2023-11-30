@@ -4,24 +4,29 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 import { Calendar } from "react-date-range";
-import 'react-date-range/dist/styles.css'; 
-import 'react-date-range/dist/theme/default.css'; 
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+import SectionTitle from "../../../Components/SectionTitle";
 
 const Balance = () => {
   const axiosSecure = useAxiosSecure();
-  const [totalPayments, setTotalPayments] = useState(0);
-  const [totalNewsLetters, setTotalNewLetters] =useState(0)
+  const [totalPaidMember, settotalPaidMember] = useState(0);
+  const [totalNewsLetters, setTotalNewLetters] = useState(0);
+  const [payments, setPayments] = useState([]);
   useEffect(() => {
-    axiosSecure.get("/payments").then((res) => {
-      setTotalPayments(res.data.length);
+    axiosSecure.get("/bookeds").then((res) => {
+      settotalPaidMember(res.data.length);
     });
     axiosSecure.get("/newsLetters").then((res) => {
       setTotalNewLetters(res.data.length);
     });
+    axiosSecure.get("/payments").then((res) => {
+      setPayments(res.data);
+    });
   }, [axiosSecure]);
   const data = [
     { name: "Total NewsLetter", value: totalNewsLetters },
-    { name: "PaidMembers", value: totalPayments },
+    { name: "PaidMembers", value: totalPaidMember },
   ];
   const COLORS = ["#0088FE", "#00C49F"];
   const RADIAN = Math.PI / 180;
@@ -65,7 +70,7 @@ const Balance = () => {
               Total Payment
             </h3>
             <h4 className="text-2xl font-bold flex items-center gap-2">
-              <GiMoneyStack /> {totalPayments}
+              <GiMoneyStack /> {payments?.length}
             </h4>
           </div>
         </div>
@@ -89,13 +94,42 @@ const Balance = () => {
                   />
                 ))}
               </Pie>
-              <Legend/>
-              <Tooltip/>
+              <Legend />
+              <Tooltip />
             </PieChart>
           </div>
           <div className="border p-3 rounded-md shadow-md">
             <Calendar date={new Date()} />
           </div>
+        </div>
+        <SectionTitle title={"Last 6 payments"} />
+        <div className="overflow-x-auto mx-5 p-5 shadow-md border rounded-md">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>TransactionId</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              {payments.slice(0,6).map((payment, inx) => (
+                <tr key={payment._id} className="bg-base-200">
+                  <th>{inx + 1}</th>
+                  <td>{payment?.name}</td>
+                  <td>{payment?.price}</td>
+                  <td>{payment?.date}</td>
+                  <td>{payment?.status}</td>
+                  <td>{payment?.transactionId}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
     </div>
