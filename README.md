@@ -2,6 +2,9 @@
 ## project name- Strong
 ### live link --> https://assignment-12-6812f.web.app/
 
+## technologies
+- react, mongodb, expressjs, jwt, react form hooks, firebase
+
 ## 5 featured in my project
 - I am create a 3 type role in my project , member, trainer, admin . initially any user registration to he/her rol member.
 - Trianer page-> you can see all trainer in our strong community and bood a trainer available slot and you go to be a trainer
