@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+
 import SectionHelmet from "../../Components/SectionHelmet";
 import SectionTitle from "../../Components/SectionTitle";
 import useAxiosPublic from "../../Hooks/useAxioPublic";
@@ -19,7 +19,7 @@ const Gallery = () => {
   const { data, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery({
     queryKey: "gallery",
     queryFn: fetchGallery,
-    getNextPageParam: (lastPage, allPage) => {
+    getNextPageParam: (lastPage) => {
       return lastPage.nextPage;
     },
   
@@ -43,6 +43,7 @@ const Gallery = () => {
     return () => {
         container.removeEventListener("scroll", handleScroll);
       };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   return (
